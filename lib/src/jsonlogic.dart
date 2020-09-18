@@ -71,6 +71,13 @@ class Jsonlogic {
     _ops['map'] = mapOperator;
     _ops['filter'] = filterOperator;
     _ops['reduce'] = reduceOperator;
+    _ops['all'] = allOperator;
+    _ops['some'] = someOperator;
+    _ops['none'] = noneOperator;
+    _ops['merge'] = mergeOperator;
+    _ops['in'] = inOperator;
+    _ops['substr'] = substrOperator;
+    _ops['log'] = logOperator;
   }
 
   dynamic _apply(dynamic rule, dynamic data) {

@@ -64,6 +64,19 @@ dynamic varStrictEqualOperator(Applier applier, dynamic data, List params) {
 }
 
 dynamic missingOperator(Applier applier, dynamic data, List params) {
+  if (params.length == 1) {
+    var v = applier(params[0], data);
+    if (v is List) {
+      params = v;
+    } else {
+      var l = findVar(v, data);
+      if (l[1]) {
+        return [v];
+      }
+      return [];
+    }
+  }
+
   var missing = [];
   for (var p in params) {
     var key = applier(p, data);
