@@ -13,16 +13,24 @@ dynamic arrayApply(dynamic Function(List args, List applied) f,
   }
   var d = applier(params[0], data);
   var opdata = params[1];
-  if (d is List && opdata is Map && opdata.length == 1) {
-    var op = opdata.keys.first;
-    var data = opdata.values.first;
-    if (op is String && data is List && data.length > 1) {
-      var args = List.from(d.map((elem) => applier(data[0], elem)));
-      var restArgs = data.sublist(1);
-      var applied = List.from(args.map((p) => applier({
-            op: [p] + restArgs
-          }, d)));
-      return f(args, applied);
+  if (d is List) {
+    if (opdata is Map<String, dynamic> && opdata.length == 1) {
+      var op = opdata.keys.first;
+      var data = opdata.values.first;
+      if (data is List) {
+        var args = List.from(d.map((elem) => applier(data[0], elem)));
+        var restArgs = data.sublist(1);
+        var applied = List.from(args.map((p) => applier({
+              op: [p] + restArgs
+            }, d)));
+        return f(args, applied);
+      } else {
+        var applied = List.from(d.map((p) => applier(opdata, p)));
+        return f(d, applied);
+      }
+    } else {
+      var applied = List.from(d.map((p) => applier(opdata, p)));
+      return f(d, applied);
     }
   }
   return defaultValue;
@@ -70,7 +78,7 @@ dynamic reduceOperator(Applier applier, dynamic data, List params) {
   if (d is List && opdata is Map && opdata.length == 1) {
     return reduce(d, applier, opdata, initialValue);
   }
-  return null;
+  return initialValue;
 }
 
 dynamic allOperator(Applier applier, dynamic data, List params) {

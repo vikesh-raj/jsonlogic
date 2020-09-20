@@ -11,6 +11,8 @@ List findVar(dynamic key, dynamic data) {
     keyList = key.split('.');
   } else if (key is num) {
     keyList = ['$key'];
+  } else if (key == null) {
+    return [data, false];
   } else {
     notFound = true;
   }
@@ -35,6 +37,8 @@ List findVar(dynamic key, dynamic data) {
       } on FormatException {
         notFound = true;
       }
+    } else {
+      notFound = true;
     }
   }
   return [d, notFound];

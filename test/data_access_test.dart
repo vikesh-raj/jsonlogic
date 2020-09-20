@@ -9,6 +9,7 @@ void dataAccessTests(Jsonlogic jl) {
       "a1": [12, "ax"],
       "a2": 34,
     }),
+    TestCase('default', r'{"var": ["a", 1]}', null, 1),
     TestCase('number', r'{"var": [2, "abc"]}',
         r'[{"a": {"a1":[12, "ax"], "a2":34}, "b": 2}, 2, 3]', 3),
     TestCase('combined', r'{"var": ["0.a.a1.1", "abc"]}',

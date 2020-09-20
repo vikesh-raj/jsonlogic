@@ -6,10 +6,20 @@ void arrayTests(Jsonlogic jl) {
   var cases = <TestCase>[
     TestCase('map', r'{"map":[{"var":"integers"},{"*":[{"var":""},2]}]}',
         r'{"integers":[1,2,3,4,5]}', [2, 4, 6, 8, 10]),
+    TestCase(
+        'map2',
+        r'{"map": [{"var": "desserts"}, {"var": "qty"}]}',
+        r'{"desserts": [{"name": "apple", "qty": 1}, {"name": "brownie", "qty": 2}, {"name": "cupcake", "qty": 3}]}',
+        [1, 2, 3]),
     TestCase('filter', r'{"filter":[{"var":"integers"},{"%":[{"var":""},2]}]}',
         r'{"integers":[1,2,3,4,5]}', [1, 3, 5]),
-    TestCase('filter', r'{"filter":[{"var":"integers"},{"%":[{"var":""},2]}]}',
-        r'{"integers":[1,2,3,4,5]}', [1, 3, 5]),
+    TestCase(
+        'filter 2',
+        r'{"filter":[{"var":"integers"},{"%":[{"var":""},2]}]}',
+        r'{"integers":[1,2,3,4,5]}',
+        [1, 3, 5]),
+    TestCase('filter no-op', r'{"filter": [{"var": "integers"}, true]}',
+        r'{"integers":[1,2,3]}', [1, 2, 3]),
     TestCase('all', r'{"all":[[1,2,3],{">":[{"var":""},0]} ]}', null, true),
     TestCase('some', r'{"some":[[-1,0,1],{">":[{"var":""},0]}]}', null, true),
     TestCase('none', r'{"none":[[-3,-2,-1],{">":[{"var":""},0]}]}', null, true),

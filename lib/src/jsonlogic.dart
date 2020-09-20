@@ -57,6 +57,7 @@ class Jsonlogic {
     _ops['missing'] = missingOperator;
     _ops['missing_some'] = missingSomeOperator;
     _ops['if'] = ifOperator;
+    _ops['?:'] = ifOperator;
     _ops['=='] = equalOperator;
     _ops['!='] = notEqualOperator;
     _ops['==='] = strictEqualOperator;
