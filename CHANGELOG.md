@@ -1,3 +1,5 @@
-## [0.0.1] - TODO: Add release date.
+# Change log for jsonlogic
 
-* TODO: Describe initial release.
+## [1.0.0] - Initial release
+
+* Initial release of json logic library.

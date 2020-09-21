@@ -34,7 +34,7 @@ void runTestcases(Jsonlogic jl, List<TestCase> cases) {
   for (var testcase in cases) {
     var expected = testcase.expected;
     var output = jl.apply(testcase.rule, testcase.data);
-    print('Test ${testcase.id} ${testcase.name}, rule : ${testcase.rule}');
+    // print('Test ${testcase.id} ${testcase.name}, rule : ${testcase.rule}');
     expect(output, expected,
         reason:
             'Case id : ${testcase.id} ${testcase.name}, input ${testcase.rule} expected $expected, got $output');

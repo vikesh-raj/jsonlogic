@@ -1,20 +1,6 @@
 import 'interface.dart';
+import 'truth.dart';
 import 'string.dart';
-
-bool isTrue(dynamic v) {
-  if (v == null) {
-    return false;
-  } else if (v is bool) {
-    return v;
-  } else if (v is num) {
-    return v != 0;
-  } else if (v is String) {
-    return v.isNotEmpty;
-  } else if (v is List || v is Map) {
-    return v.isNotEmpty;
-  }
-  return true;
-}
 
 dynamic ifOperator(Applier applier, dynamic data, List params) {
   while (true) {
@@ -23,7 +9,7 @@ dynamic ifOperator(Applier applier, dynamic data, List params) {
       return applier(params[0], data);
     }
     var cond = applier(params[0], data);
-    if (isTrue(cond)) {
+    if (truth(cond)) {
       return applier(params[1], data);
     } else if (params.length < 2) {
       return null;
@@ -45,7 +31,7 @@ bool isEqual(Applier applier, dynamic data, List params) {
     return toString(v1) == toString(v2);
   }
   if (v1 is bool || v2 is bool) {
-    return isTrue(v1) == isTrue(v2);
+    return truth(v1) == truth(v2);
   }
   return v1 == v2;
 }
@@ -87,7 +73,7 @@ dynamic notOperator(Applier applier, dynamic data, List params) {
     return false;
   }
   var v = applier(params[0], data);
-  return !isTrue(v);
+  return !truth(v);
 }
 
 dynamic notNotOperator(Applier applier, dynamic data, List params) {
@@ -95,14 +81,14 @@ dynamic notNotOperator(Applier applier, dynamic data, List params) {
     return false;
   }
   var v = applier(params[0], data);
-  return isTrue(v);
+  return truth(v);
 }
 
 dynamic orOperator(Applier applier, dynamic data, List params) {
   var v;
   for (var p in params) {
     v = applier(p, data);
-    if (isTrue(v)) return v;
+    if (truth(v)) return v;
   }
   return v;
 }
@@ -111,7 +97,7 @@ dynamic andOperator(Applier applier, dynamic data, List params) {
   var v;
   for (var p in params) {
     v = applier(p, data);
-    if (!isTrue(v)) return v;
+    if (!truth(v)) return v;
   }
   return v;
 }
@@ -120,7 +106,7 @@ dynamic andBoolOperator(Applier applier, dynamic data, List params) {
   var v;
   for (var p in params) {
     v = applier(p, data);
-    if (!isTrue(v)) return false;
+    if (!truth(v)) return false;
   }
   return true;
 }

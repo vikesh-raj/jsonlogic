@@ -1,7 +1,6 @@
 name: jsonlogic
-description: A new Flutter package project.
+description: Evaluate json logic rules for given data
 version: 1.0.0
-author: vikesh.raj@gmail.com
 homepage: https://github.com/vikesh-raj/jsonlogic
 
 environment:
