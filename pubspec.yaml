@@ -1,6 +1,6 @@
 name: jsonlogic
-description: Evaluate json logic rules for given data
-version: 1.0.0
+description: jsonlogic is dart implementation of JsonLogic, which applies logic rules on JSON.
+version: 1.0.1
 homepage: https://github.com/vikesh-raj/jsonlogic
 
 environment:
