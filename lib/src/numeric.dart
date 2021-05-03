@@ -1,6 +1,6 @@
 import 'interface.dart';
 
-num getNumber(dynamic arg) {
+num? getNumber(dynamic arg) {
   if (arg is num) {
     return arg;
   } else if (arg is String) {

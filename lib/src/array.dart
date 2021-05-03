@@ -49,7 +49,7 @@ dynamic filterOperator(Applier applier, dynamic data, List params) {
   List filter(List args, List applied) {
     var output = [];
     for (int i = 0; i < args.length; i++) {
-      if (truth(applied[i])) {
+      if (truth(applied[i])!) {
         output.add(args[i]);
       }
     }
@@ -76,7 +76,7 @@ dynamic reduceOperator(Applier applier, dynamic data, List params) {
   var opdata = params[1];
   var initialValue = params[2];
   if (d is List && opdata is Map && opdata.length == 1) {
-    return reduce(d, applier, opdata, initialValue);
+    return reduce(d, applier, opdata as Map<String, dynamic>, initialValue);
   }
   return initialValue;
 }
@@ -85,7 +85,7 @@ dynamic allOperator(Applier applier, dynamic data, List params) {
   bool all(List array) {
     if (array.isEmpty) return false;
     for (var a in array) {
-      if (!truth(a)) return false;
+      if (!truth(a)!) return false;
     }
     return true;
   }
@@ -97,7 +97,7 @@ dynamic someOperator(Applier applier, dynamic data, List params) {
   bool some(List array) {
     if (array.isEmpty) return false;
     for (var a in array) {
-      if (truth(a)) return true;
+      if (truth(a)!) return true;
     }
     return false;
   }
@@ -108,7 +108,7 @@ dynamic someOperator(Applier applier, dynamic data, List params) {
 dynamic noneOperator(Applier applier, dynamic data, List params) {
   bool none(List array) {
     for (var a in array) {
-      if (truth(a)) return false;
+      if (truth(a)!) return false;
     }
     return true;
   }

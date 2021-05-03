@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 class TestCase {
   String name;
   String rule;
-  String data;
+  String? data;
   dynamic expected;
   bool run;
   bool fail;
@@ -21,7 +21,7 @@ void runTestcases(Jsonlogic jl, List<TestCase> cases, {bool runMode = false}) {
     }
     var rule = json.decode(testcase.rule);
     var data;
-    if (testcase.data?.isNotEmpty == true) data = json.decode(testcase.data);
+    if (testcase.data?.isNotEmpty == true) data = json.decode(testcase.data!);
     var expected = testcase.expected;
     if (testcase.fail) {
       expect(() => jl.apply(rule, data), throwsA(isA<JsonlogicException>()),
