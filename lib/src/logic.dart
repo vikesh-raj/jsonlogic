@@ -9,7 +9,7 @@ dynamic ifOperator(Applier applier, dynamic data, List params) {
       return applier(params[0], data);
     }
     var cond = applier(params[0], data);
-    if (truth(cond)!) {
+    if (truth(cond)) {
       return applier(params[1], data);
     } else if (params.length < 2) {
       return null;
@@ -73,7 +73,7 @@ dynamic notOperator(Applier applier, dynamic data, List params) {
     return false;
   }
   var v = applier(params[0], data);
-  return !truth(v)!;
+  return !truth(v);
 }
 
 dynamic notNotOperator(Applier applier, dynamic data, List params) {
@@ -88,7 +88,7 @@ dynamic orOperator(Applier applier, dynamic data, List params) {
   var v;
   for (var p in params) {
     v = applier(p, data);
-    if (truth(v)!) return v;
+    if (truth(v)) return v;
   }
   return v;
 }
@@ -97,7 +97,7 @@ dynamic andOperator(Applier applier, dynamic data, List params) {
   var v;
   for (var p in params) {
     v = applier(p, data);
-    if (!truth(v)!) return v;
+    if (!truth(v)) return v;
   }
   return v;
 }
@@ -106,7 +106,7 @@ dynamic andBoolOperator(Applier applier, dynamic data, List params) {
   var v;
   for (var p in params) {
     v = applier(p, data);
-    if (!truth(v)!) return false;
+    if (!truth(v)) return false;
   }
   return true;
 }

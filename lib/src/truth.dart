@@ -1,6 +1,6 @@
 // truth returns true for any truthy-value. null, false, 0, empty list or map
 // are false. Remaining values are all true.
-bool? truth(dynamic v) {
+bool truth(dynamic v) {
   if (v == null) {
     return false;
   } else if (v is bool) {
