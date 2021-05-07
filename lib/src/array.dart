@@ -76,7 +76,7 @@ dynamic reduceOperator(Applier applier, dynamic data, List params) {
   var opdata = params[1];
   var initialValue = params[2];
   if (d is List && opdata is Map && opdata.length == 1) {
-    return reduce(d, applier, opdata, initialValue);
+    return reduce(d, applier, opdata as Map<String, dynamic>, initialValue);
   }
   return initialValue;
 }

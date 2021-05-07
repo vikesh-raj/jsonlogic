@@ -12,7 +12,7 @@ const _quickVarOp = '_quick_access';
 
 /// Jsonlogic evaluates the jsonlogic rules for the given data.
 class Jsonlogic {
-  Map<String, Operator> _ops;
+  late Map<String, Operator> _ops;
 
   /// Creates the Jsonlogic class with default operations.
   Jsonlogic() {
