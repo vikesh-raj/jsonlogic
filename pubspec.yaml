@@ -1,17 +1,17 @@
 name: jsonlogic
 description: jsonlogic is dart implementation of JsonLogic, which applies logic rules on JSON.
-version: 1.0.1
+version: 2.0.0
 homepage: https://github.com/vikesh-raj/jsonlogic
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
-  collection: ^1.14.13
+  collection: ^1.15.0
 
 dev_dependencies:
-  pedantic: ^1.9.0
-  test: ^1.14.4
+  pedantic: ^1.11.0
+  test: ^1.16.5
   flutter_test:
     sdk: flutter
 
