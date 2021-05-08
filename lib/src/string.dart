@@ -27,13 +27,12 @@ dynamic substrOperator(Applier applier, dynamic data, List params) {
   var s = '';
   var start = 0;
   var len = 0;
-  if (params.length > 0) {
-    var v = applier(params[0], data);
-    if (v is String) {
-      s = v;
-    } else {
-      return '';
-    }
+
+  var v = applier(params[0], data);
+  if (v is String) {
+    s = v;
+  } else {
+    return '';
   }
 
   if (params.length > 1) {

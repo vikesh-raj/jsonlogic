@@ -1,5 +1,9 @@
 # Change log for jsonlogic
 
+## [2.0.1] - Pedantic
+
+* Fix issues raised by pedantic
+
 ## [2.0.0] - Null safety
 
 * Added null safety (by @fermuch)

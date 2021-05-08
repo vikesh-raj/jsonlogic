@@ -16,14 +16,14 @@ class Jsonlogic {
 
   /// Creates the Jsonlogic class with default operations.
   Jsonlogic() {
-    _ops = new Map<String, Operator>();
+    _ops = <String, Operator>{};
     _addDefaultOps();
   }
 
   /// Creates the Jsonlogic class with no operations. The operations needs to
   /// manually added via the `add` function.
   Jsonlogic.empty() {
-    _ops = new Map<String, Operator>();
+    _ops = <String, Operator>{};
   }
 
   /// add a function/operator.

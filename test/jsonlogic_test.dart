@@ -4,10 +4,10 @@ import 'package:test/test.dart';
 
 void defaultAggTests(Jsonlogic jl) {
   var cases = <TestCase>[
-    TestCase("nil case", 'null', r'[true]', null),
-    TestCase("default aggregate true", r'{"===" : [1, 1], "var": 0, "+": [1]}',
+    TestCase('nil case', 'null', r'[true]', null),
+    TestCase('default aggregate true', r'{"===" : [1, 1], "var": 0, "+": [1]}',
         r'[true]', true),
-    TestCase("default aggregate false",
+    TestCase('default aggregate false',
         r'{"===" : [1, 1], "var": 0, "+": [1, -1]}', r'[true]', false),
   ];
   runTestcases(jl, cases);

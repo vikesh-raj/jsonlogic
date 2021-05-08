@@ -48,7 +48,7 @@ dynamic mapOperator(Applier applier, dynamic data, List params) {
 dynamic filterOperator(Applier applier, dynamic data, List params) {
   List filter(List args, List applied) {
     var output = [];
-    for (int i = 0; i < args.length; i++) {
+    for (var i = 0; i < args.length; i++) {
       if (truth(applied[i])) {
         output.add(args[i]);
       }
@@ -63,7 +63,7 @@ dynamic reduce(
     List data, Applier applier, Map<String, dynamic> opdata, dynamic zero) {
   var r = zero;
   for (var d in data) {
-    r = applier(opdata, {"current": d, "accumulator": r});
+    r = applier(opdata, {'current': d, 'accumulator': r});
   }
   return r;
 }
