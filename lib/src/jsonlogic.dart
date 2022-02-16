@@ -82,7 +82,7 @@ class Jsonlogic {
   }
 
   dynamic _apply(dynamic rule, dynamic data) {
-    var result;
+    dynamic result;
     if (rule == null ||
         rule is bool ||
         rule is num ||

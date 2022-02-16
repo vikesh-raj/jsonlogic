@@ -1,7 +1,13 @@
-.PHONY: test get publish analyze
+.PHONY: test get publish analyze coverage
 
 test:
-	flutter pub run test test
+	dart run test
+
+coverage:
+	dart run test --coverage=./coverage
+	flutter pub global activate coverage
+	flutter pub global run coverage:format_coverage --packages=.packages --report-on=lib --lcov -o ./coverage/lcov.info -i ./coverage
+	genhtml -o ./coverage/report ./coverage/lcov.info
 
 get:
 	flutter pub get

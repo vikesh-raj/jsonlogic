@@ -85,7 +85,7 @@ dynamic notNotOperator(Applier applier, dynamic data, List params) {
 }
 
 dynamic orOperator(Applier applier, dynamic data, List params) {
-  var v;
+  dynamic v;
   for (var p in params) {
     v = applier(p, data);
     if (truth(v)) return v;
@@ -94,7 +94,7 @@ dynamic orOperator(Applier applier, dynamic data, List params) {
 }
 
 dynamic andOperator(Applier applier, dynamic data, List params) {
-  var v;
+  dynamic v;
   for (var p in params) {
     v = applier(p, data);
     if (!truth(v)) return v;
@@ -103,7 +103,7 @@ dynamic andOperator(Applier applier, dynamic data, List params) {
 }
 
 dynamic andBoolOperator(Applier applier, dynamic data, List params) {
-  var v;
+  dynamic v;
   for (var p in params) {
     v = applier(p, data);
     if (!truth(v)) return false;

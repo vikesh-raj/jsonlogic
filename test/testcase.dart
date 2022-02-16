@@ -20,7 +20,7 @@ void runTestcases(Jsonlogic jl, List<TestCase> cases, {bool runMode = false}) {
       continue;
     }
     var rule = json.decode(testcase.rule);
-    var data;
+    dynamic data;
     if (testcase.data?.isNotEmpty == true) data = json.decode(testcase.data!);
     var expected = testcase.expected;
     if (testcase.fail) {

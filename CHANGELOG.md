@@ -1,5 +1,10 @@
 # Change log for jsonlogic
 
+## [2.0.2] - Lint
+
+* Fix lint errors
+* Add test coverage
+
 ## [2.0.1] - Pedantic
 
 * Fix issues raised by pedantic
