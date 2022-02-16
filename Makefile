@@ -1,4 +1,4 @@
-.PHONY: test get publish analyze coverage
+.PHONY: test get publish analyze coverage format
 
 test:
 	dart run test
@@ -17,3 +17,6 @@ publish:
 
 analyze:
 	flutter analyze
+
+format:
+	flutter format .
