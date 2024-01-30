@@ -1,4 +1,7 @@
+import 'package:jsonlogic/src/datetime.dart';
+
 import 'interface.dart';
+import 'numeric.dart';
 import 'truth.dart';
 import 'string.dart';
 
@@ -27,6 +30,11 @@ bool isEqual(Applier applier, dynamic data, List params) {
   }
   var v1 = applier(params[0], data);
   var v2 = applier(params[1], data);
+
+  if (getDateTime(v1) is DateTime) {
+    return isDateTimeEqualOperator(applier, data, params);
+  }
+
   if (v1 is String || v2 is String) {
     return toString(v1) == toString(v2);
   }
@@ -109,4 +117,37 @@ dynamic andBoolOperator(Applier applier, dynamic data, List params) {
     if (!truth(v)) return false;
   }
   return true;
+}
+
+dynamic determineAndApplyComparison(Applier applier, dynamic data, List params, Function dateTimeOperator, Function numberOperator) {
+  if (params.isEmpty) {
+    return false;
+  }
+
+  var v1 = applier(params[0], data);
+  if (getDateTime(v1) is DateTime) {
+    return dateTimeOperator(applier, data, params);
+  }
+
+  return numberOperator(applier, data, params);
+}
+
+dynamic lessOperator(Applier applier, dynamic data, List params) {
+  return determineAndApplyComparison(
+      applier, data, params, dateTimeLessOperator, numLessOperator);
+}
+
+dynamic lessEqualOperator(Applier applier, dynamic data, List params) {
+  return determineAndApplyComparison(
+      applier, data, params, dateTimeLessEqualOperator, numLessEqualOperator);
+}
+
+dynamic greaterOperator(Applier applier, dynamic data, List params) {
+  return determineAndApplyComparison(
+      applier, data, params, dateTimeGreaterOperator, numGreaterOperator);
+}
+
+dynamic greaterEqualOperator(Applier applier, dynamic data, List params) {
+  return determineAndApplyComparison(applier, data, params,
+      dateTimeGreaterEqualOperator, numGreaterEqualOperator);
 }
