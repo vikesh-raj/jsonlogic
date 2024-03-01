@@ -1,3 +1,4 @@
+import 'datetime.dart';
 import 'interface.dart';
 import 'errors.dart';
 import 'data_access.dart';
@@ -79,6 +80,9 @@ class Jsonlogic {
     _ops['in'] = inOperator;
     _ops['substr'] = substrOperator;
     _ops['log'] = logOperator;
+    _ops['now'] = nowOperator;
+    _ops['current_date'] = currentDateOperator;
+    _ops['date_add'] = dateAddOperator;
   }
 
   dynamic _apply(dynamic rule, dynamic data) {
