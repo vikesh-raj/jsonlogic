@@ -27,6 +27,7 @@ void logicTests(Jsonlogic jl) {
     TestCase('and', r'{"and":[true,"a",3]}', d, 3),
     TestCase('and', r'{"and":[true,"",3]}', d, ''),
     TestCase('==', r'{"==" : [1, 1]}', d, true),
+    TestCase('==', r'{"==" : [1,[1]]}', d, true),
     TestCase('== string', r'{"==" : [1, "1"]}', d, true),
     TestCase('== bool', r'{"==" : [0, false]}', d, true),
     TestCase('== bool false', r'{"==" : [0, true]}', d, false),
